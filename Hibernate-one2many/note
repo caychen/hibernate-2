@@ -1,0 +1,12 @@
+实现单向一对多：
+	(1)、在one方的实体中添加保存many方的集合
+		private Set<Student2> students = new HashSet<Student2>();
+	(2)、在one方的映射配置文件中添加<one-to-many>
+	    <!-- 配置单向的一对多关联关系 -->
+        <set name="students" table="STUDENT2" inverse="false" lazy="true" >
+            <key>
+            	<!-- 指定关联的外键列 -->
+                <column name="gid" />
+            </key>
+            <one-to-many class="org.com.cay.entity.Student2" />
+        </set>

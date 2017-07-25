@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-4 19:22:19 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.com.cay.entity">
+    <class name="Customer" table="CUSTOMER">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME" />
+        </property>
+        
+        <!-- 映射一对多的关联属性 -->
+        <!-- 
+        	table: set中的元素对应的记录放在哪个数据表中，该值需要和多对一的多的那个表的名字一致
+        	key: 执行多的表中的外键列的名字
+        	one-to-many: 指定映射类型
+         -->
+         <!-- 
+         	inverse: 在双向一对多的关联关系中，为了避免发送多余的update语句，则指定set属性的inverse为true，
+          	表示指定由哪一方来维护关联关系，true表示由多的一端来维护关联关系 -->
+          <!--
+          	cascade: 级联操作，在实际开发中不建议使用该属性
+          		delete-orphan: 表示在多的一端与1的一端失去关联关系的同时，将其删除。
+          		save-update: 表示在保存1的一端的时候同时将关联的多的一端的对象也进行保存。
+          		all: 全级联
+           -->
+          <!-- 
+          	order-by: 在查询的时候对集合中的元素进行排序，order-by中使用的是表的字段名，而不是属性名
+          		order-by中也可以加入SQL函数
+           -->
+        <set name="orderss" table="ORDERS" inverse="true" cascade="delete-orphan" order-by="ORDER_NAME DESC">
+        	<key column="CUSTOMER_ID"></key>
+        	<one-to-many class="Orders"/>
+        </set>
+    </class>
+</hibernate-mapping>

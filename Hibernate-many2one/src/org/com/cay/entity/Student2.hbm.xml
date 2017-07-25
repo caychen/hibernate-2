@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-14 15:03:08 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.Student2" table="STUDENT2">
+        <id name="sid" type="integer">
+            <column name="SID" />
+            <generator class="increment" />
+        </id>
+        <property name="sname" type="string">
+            <column name="SNAME" />
+        </property>
+        <property name="sex" type="string">
+            <column name="SEX" />
+        </property>
+        
+        <many-to-one name="grade" class="org.com.cay.entity.Grade" column="gid"></many-to-one>
+    </class>
+</hibernate-mapping>

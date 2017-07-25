@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">Cay20130621</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- 启用二级缓存 -->
+		<property name="cache.use_second_level_cache">true</property>
+		
+		<!-- 启用查询缓存 -->
+		<property name="cache.use_query_cache">true</property>
+		
+		<!-- 配置使用二级缓存的 -->
+		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+	
+
+		<mapping resource="org/com/cay/entity/Department.hbm.xml" />
+		<mapping resource="org/com/cay/entity/Employee.hbm.xml" />
+
+		<!-- 对具体类进行二级缓存 -->
+		<!-- 类级别的二级缓存 <class-cache usage="read-write" class="org.com.cay.entity.Employee"/> -->
+
+
+
+		<!-- 以下配置用来测试集合级别的二级缓存 -->
+		<class-cache usage="read-write" class="org.com.cay.entity.Department" />
+		<!-- 集合级别的二级缓存 -->
+		<collection-cache usage="read-write"
+			collection="org.com.cay.entity.Department.employees" />
+		<class-cache usage="read-write" class="org.com.cay.entity.Employee"/>
+	</session-factory>
+</hibernate-configuration>

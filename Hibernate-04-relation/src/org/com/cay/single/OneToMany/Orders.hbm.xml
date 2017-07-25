@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-5 21:29:49 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.single.OneToMany.Orders" table="ORDERS">
+        <id name="ordersId" type="java.lang.Integer">
+            <column name="ORDERS_ID" />
+            <generator class="native" />
+        </id>
+        <property name="orderName" type="java.lang.String">
+            <column name="ORDER_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

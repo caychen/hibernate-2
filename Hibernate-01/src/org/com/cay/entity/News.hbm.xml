@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-28 22:26:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.News" table="NEWS">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="title" type="java.lang.String" length="20">
+            <column name="TITLE" />
+        </property>
+        <property name="author" type="java.lang.String" length="20">
+            <column name="AUTHOR" />
+        </property>
+        <property name="publishDate" type="java.util.Date">
+            <column name="PUBLISHDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

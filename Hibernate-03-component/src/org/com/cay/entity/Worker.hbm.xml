@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-3 20:22:45 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.com.cay.entity">
+    <class name="org.com.cay.entity.Worker" table="WORKER">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <!-- 映射组成关系 -->
+        <component name="pay" class="Pay">
+        	<property name="monthPay" column="MONTHPAY"></property>
+        	<property name="yearPay" column="YEARPAY"></property>
+        	<property name="vocationWithPay" column="VOCATIONWITHPAY"></property>
+        </component>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-8 21:29:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.both.OneToOne.pk.Manager" table="MANAGER">
+        <id name="mgrId" type="java.lang.Integer">
+            <column name="MGR_ID" />
+            <generator class="native" />
+        </id>
+        <property name="mgrName" type="java.lang.String">
+            <column name="MGR_NAME" />
+        </property>
+        
+        <one-to-one name="dept"  class="org.com.cay.both.OneToOne.pk.Department"></one-to-one>
+    </class>
+</hibernate-mapping>

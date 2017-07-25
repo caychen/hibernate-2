@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-8 21:29:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.both.OneToOne.fk.Manager" table="MANAGER">
+        <id name="mgrId" type="java.lang.Integer">
+            <column name="MGR_ID" />
+            <generator class="native" />
+        </id>
+        <property name="mgrName" type="java.lang.String">
+            <column name="MGR_NAME" />
+        </property>
+        
+        <!-- 
+        	映射一对一的关联关系：在对应的数据库表中已经有外键了，所以当前持久化类使用one-to-one进行映射
+        	没有外键的一端需要使用one-to-one，并在该标签中使用property-ref属性指定使用被关联实体主键以外的字段作为关联字段，
+        	即指定dept属性使用其持久化类Department的mgr属性作为外键
+         -->
+        
+        <one-to-one name="dept" property-ref="mgr" class="org.com.cay.both.OneToOne.fk.Department"></one-to-one>
+    </class>
+</hibernate-mapping>

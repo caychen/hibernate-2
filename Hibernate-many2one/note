@@ -1,0 +1,9 @@
+实现单向多对一：
+	(1)、在多方的类中添加one方的引用
+		private Grade grade;
+	(2)、在many方的配置文件中添加<many-to-one>配置
+		<many-to-one name="grade" class="org.com.cay.entity.Grade" column="gid"></many-to-one>
+		
+	常用属性：
+		cascade:设置级联关系
+		inverse:设置由哪一方维护关联关系

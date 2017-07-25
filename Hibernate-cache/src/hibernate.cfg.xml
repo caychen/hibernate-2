@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<property name="connection.username">root</property>
+    	<property name="connection.password">Cam20150916</property>
+    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    	<property name="connection.url">
+    		<![CDATA[
+    			jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8		
+    		]]>
+    	</property>
+    	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+    	<property name="show_sql">true</property>
+    	<property name="format_sql">true</property>
+    	
+    	<!-- create:每次都新建数据表，如果已存在，先删除原来的表 -->
+    	<!-- update:更新数据表 -->
+    	<property name="hbm2ddl.auto">update</property>
+    	
+    	<!-- 开启二级缓存 -->
+  		<property name="cache.use_second_level_cache">true</property>
+    	<!-- 指定二级缓存组件类型 --> 
+    	<property name="cache.region.factory_class" >org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+    	
+    	<mapping resource="org/com/cay/entity/Items.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

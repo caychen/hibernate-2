@@ -1,0 +1,20 @@
+在双方的实体类中添加另外一方的集合
+	private Set<Project> projects = new HashSet<Project>();
+	private Set<Employee> employees = new HashSet<Employee>();
+	
+在双方的映射文件中使用<set>和<many-to-many>元素进行关联关系的配置
+	Employee.hbm.xml:
+	<set name="projects" table="PROEMP" inverse="true"  cascade="all">
+        <key>
+            <column name="rempid" />
+        </key>
+        <many-to-many class="org.com.cay.entity.Project" column="rproid"/>
+    </set>
+    
+    Project.hbm.xml:
+    <set name="employees" table="PROEMP" inverse="false" cascade="all" lazy="true">
+        <key>
+            <column name="rproid" />
+        </key>
+        <many-to-many class="org.com.cay.entity.Employee" column="rempid"/>
+    </set>

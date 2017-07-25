@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-14 15:03:08 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.Grade" table="GRADE">
+        <id name="gid" type="integer">
+            <column name="GID" />
+            <generator class="increment" />
+        </id>
+        <property name="gname" type="string">
+            <column name="GNAME" />
+        </property>
+        <property name="gdesc" type="string">
+            <column name="GDESC" />
+        </property>
+        
+        <!-- 配置单向的一对多关联关系 -->
+        <set name="students" table="STUDENT2" inverse="false" lazy="true" >
+            <key>
+            	<!-- 指定关联的外键列 -->
+                <column name="gid" />
+            </key>
+            <one-to-many class="org.com.cay.entity.Student2" />
+        </set>
+    </class>
+</hibernate-mapping>

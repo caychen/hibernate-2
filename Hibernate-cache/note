@@ -1,0 +1,37 @@
+一级缓存(Session级缓存，会话缓存):
+	(1)清除session一级缓存中指定的缓存对象
+		session.evict(Object obj);
+		
+	(2)清除session中一级缓存中所有的的缓存对象
+		session.clear();
+		
+	(3)get：
+		Hibernate默认强制开启一级缓存，会从缓存中查询，如果找到则返回，如果未找到，则去数据库中进行查询
+		
+	(4)Query.list():
+		查询的数据会放入一级缓存，但是list不会使用一级缓存机制，而是直接去数据库中查询数据，即使一级缓存中已有数据。
+				
+	(5)Itrator:
+		Iterator先从一级缓存中查询，如果找到，直接返回，如果未找到，去数据库中查找。
+		
+二级缓存(应用级缓存，全局缓存):
+	(1)Hibernate 4.0及以后的配置如下：
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+	Hibernate 3.3 配置如下：
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+			
+	(2)并在对应的实体映射文件中添加<cache usage="read-only"/>从而对该对象开启了二级缓存:		
+		<class name="org.com.cay.entity.Items" table="ITEMS">
+    		<cache usage="read-only"/><!-- 对该对象进行开启二级缓存 -->
+    		...
+        	<property></property>
+    	</class>
+    	
+cache标签：
+	usage：策略模式
+	include：指定是否缓存延迟加载的对象，all表示缓存所有对象，non-lazy表示不缓存延迟加载的对象
+	region：指定二级缓存的区域名,该区域名在ehcache.xml文件中的<cache>标签	
+    	

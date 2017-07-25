@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Cay20130621</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        
+       <!-- 配置c3p0数据源 -->
+       <property name="c3p0.max_size">10</property>
+       <property name="c3p0.min_size">5</property>
+       <property name="c3p0.acquire_increment">2</property>
+       <property name="c3p0.timeout">2000</property>
+       <property name="c3p0.idle_test_period">2000</property>
+       <property name="c3p0.max_statements">10</property>
+       <property name="jdbc.fetch_size">100</property>
+       <property name="jdbc.batch_size">30</property>
+        
+        <mapping resource="org/com/cay/entity/News.hbm.xml"/>
+        <mapping resource="org/com/cay/entity/Worker.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

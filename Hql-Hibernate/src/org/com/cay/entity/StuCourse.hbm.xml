@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-27 15:42:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.StuCourse" table="STUCOURSE">
+        <id name="cid" type="java.lang.Integer">
+            <column name="CID" />
+            <generator class="increment" />
+        </id>
+        <property name="stuCourse" type="java.lang.Integer">
+            <column name="STUCOURSE" />
+        </property>
+        <property name="sid" type="java.lang.Integer">
+            <column name="SID" />
+        </property>
+        <property name="grade" type="java.lang.Integer">
+            <column name="GRADE" />
+        </property>
+    </class>
+</hibernate-mapping>

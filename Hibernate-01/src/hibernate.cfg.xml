@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Cay20130621</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        
+         <!-- 设置hibernate的事务隔离级别 -->
+        <property name="hibernate.connection.isolation">2</property>
+        
+        <!-- 删除对象后，将主键id设为null -->
+        <property name="hibernate.use_identifier_rollback">true</property>
+        
+        <mapping resource="org/com/cay/entity/News.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

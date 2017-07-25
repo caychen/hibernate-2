@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-1-10 20:32:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="org.com.cay.single.ManyToMany">
+    <class name="Category" table="CATEGORY">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <!-- table:指定中间表  -->
+        <set name="items" table="CATEGORY_ITEM">
+            <key>
+                <column name="CATEGORY_ID" />
+            </key>
+            <!-- 使用many-to-many指定多对多的关联关系，column执行set集合中的持久化类在中间表的外键列的名称 -->
+            <many-to-many class="Item" column="ITEM_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

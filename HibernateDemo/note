@@ -1,0 +1,28 @@
+1、开启自动提交事务
+		session.doWork(new Work() {
+			
+			@Override
+			public void execute(Connection connection) throws SQLException {
+				// TODO Auto-generated method stub
+				connection.setAutoCommit(true);
+			}
+		});
+		
+2、如果使用getCurrentSession需要在hibernate.cfg.xml文件中配置：
+	本地事务(jdbc事务)
+		<property name="current_session_context_class">thread</property>
+	全局事务(jta事务)
+		<property name="current_session_context_class">jta</property>
+		
+3、openSession和getCurrentSession的区别
+	(1)、getCurrentSession在事务提交或者回滚之后会自动关闭，
+		而openSession需要手动关闭，如果使用openSession而没有手动关闭，多次之后会导致连接池溢出。
+	(2)、openSession每次创建新的session对象，而getCurrentSession使用现有的session对象。
+	
+4、get和load的区别
+	(1)、在不考虑缓存的情况下，get方法会在调用之后立即向数据库发送sql语句，返回持久化对象
+		load方法会在调用后返回一个代理对象，该代理对象只保存了实体对象的id，直到使用该对象的非主键属性时才会发出sql语句
+	(2)、查询数据库中不存在的数据时，get方法会返回null
+		load方法会抛出异常		
+		
+					
